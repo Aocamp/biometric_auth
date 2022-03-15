@@ -22,8 +22,8 @@ class AuthPresenter (private val view : AuthContract.ViewContract) : AuthContrac
     override fun authUser(login: String, pass: String) {
         if (validateField(login, pass)) {
             ApiService.getInstance()
-                .postRequest(RequestConstants.AUTH, Auth(login, pass))
-                .enqueue(ResponseHandler(this))
+                .postRequest<Any>(RequestConstants.AUTH, Auth(login, pass))
+                .enqueue(ResponseHandler<Any>(this))
         }
     }
 

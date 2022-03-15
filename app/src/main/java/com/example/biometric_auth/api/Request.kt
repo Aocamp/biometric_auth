@@ -9,8 +9,8 @@ import retrofit2.http.Path
 
 interface Request {
     @POST("{end_point}")
-    fun postRequest(@Path("end_point") endPoint : String, @Body body : Any) : Call<Any>
+    fun <T> postRequest(@Path("end_point") endPoint : String, @Body body : Any) : Call<T>
 
     @GET("{end_point}")
-    fun getRequest(@Path("end_point") endPoint : String) : Call<Any>
+    fun <T> getRequest(@Path("end_point") endPoint : String) : Call<T>
 }
