@@ -24,7 +24,7 @@ class RegistrationPresenter(private val view: RegistrationContract.ViewContract)
         if (validateField(login, pass, email)) {
             this.login = login
             this.pass = pass
-            ApiService.getInstance().postRequest(
+            ApiService.getInstance().postRequest<Any>(
                 RequestConstants.REGISTER,
                 Register(login, pass, email, biometric)
             ).enqueue(ResponseHandler(object : BaseCallback<Any> {
@@ -44,7 +44,7 @@ class RegistrationPresenter(private val view: RegistrationContract.ViewContract)
     }
 
     override fun authUser(login: String, pass: String) {
-        ApiService.getInstance().postRequest(
+        ApiService.getInstance().postRequest<Any>(
             RequestConstants.AUTH,
             Auth(login, pass)
         ).enqueue(ResponseHandler(object : BaseCallback<Any> {
